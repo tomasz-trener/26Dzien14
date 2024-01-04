@@ -3,21 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P07Shop.DataSeeder", "P07Shop.DataSeeder\P07Shop.DataSeeder.csproj", "{29DD84FC-F165-4C27-9D2C-2753C1DD4FF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P07Shop.DataSeeder", "P07Shop.DataSeeder\P07Shop.DataSeeder.csproj", "{29DD84FC-F165-4C27-9D2C-2753C1DD4FF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P04WeatherForecastWPF.Client", "P04WeatherForecastWPF.Client\P04WeatherForecastWPF.Client.csproj", "{E167DEC9-5D44-4D7A-AE25-D2EB21D4AEA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P04WeatherForecastWPF.Client", "P04WeatherForecastWPF.Client\P04WeatherForecastWPF.Client.csproj", "{E167DEC9-5D44-4D7A-AE25-D2EB21D4AEA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P05Shop.API", "P05Shop.API\P05Shop.API.csproj", "{1C2EB1D8-561B-49AD-9082-3EAB9F7ACA10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P05Shop.API", "P05Shop.API\P05Shop.API.csproj", "{1C2EB1D8-561B-49AD-9082-3EAB9F7ACA10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P06Shop.Shared", "P06Shop.Shared\P06Shop.Shared.csproj", "{F61A74EA-8435-4A36-A0E4-05A71107F886}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P06Shop.Shared", "P06Shop.Shared\P06Shop.Shared.csproj", "{F61A74EA-8435-4A36-A0E4-05A71107F886}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A3A7B0A4-AD82-4E07-884C-B71E8540CDDF}"
+	ProjectSection(SolutionItems) = preProject
+		Podsumowanie.txt = Podsumowanie.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{29DD84FC-F165-4C27-9D2C-2753C1DD4FF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -36,5 +38,11 @@ Global
 		{F61A74EA-8435-4A36-A0E4-05A71107F886}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F61A74EA-8435-4A36-A0E4-05A71107F886}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F61A74EA-8435-4A36-A0E4-05A71107F886}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AC6C2A45-92EE-41A8-973B-B54ABBC2D25C}
 	EndGlobalSection
 EndGlobal

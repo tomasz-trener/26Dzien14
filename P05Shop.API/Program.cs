@@ -1,4 +1,6 @@
-﻿using P05Shop.API.Services;
+﻿using Microsoft.EntityFrameworkCore;
+using P05Shop.API.Models;
+using P05Shop.API.Services;
 using P06Shop.Shared.Services.ProductService;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +13,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
+builder.Services.AddDbContext<DataContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 builder.Services.AddScoped<IProductService, ProductService>();
 
 // addScoped - oznacza, że w trakcie jednego requestu będzie istniała tylko jedna instancja klasy ProductService

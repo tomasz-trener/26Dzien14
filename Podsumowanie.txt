@@ -1,0 +1,11 @@
+﻿Tworzymy bazę danych w podejściu Code-First 
+
+1) Stworzenie DataContext
+2) Dodanie paczek: 
+    - Microsoft.EntityFrameworkCore - wykorzystywane do tworzenia data kontekstu
+	- Microsoft.EntityFrameworkCore.SqlServer - wykorzystywane do komunikacji z bazą danych sql server
+	- Microsoft.EntityFrameworkCore.Design - wykorzystywane do migracji
+3) Sposórd rozwiązń: data annotations i fluent api wybieramy : fluent api
+ - konfigurujemy data context
+ - dokumentacja w : https://www.entityframeworktutorial.net/efcore/
+ - okreslamy connectionString w appsettings.json
