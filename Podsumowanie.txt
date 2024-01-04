@@ -26,3 +26,7 @@
 	- serwis z obsługą CRUD 
 	- kontroler z obsługą CRUD zgodnie z REST
 	- testujemy API w Postmanie
+
+6) Rozbudowa klienta o:
+	- serwis z obsługą CRUD 
+	- dodanie widoków w xaml  

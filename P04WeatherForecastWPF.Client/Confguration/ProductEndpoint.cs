@@ -10,5 +10,6 @@ namespace P04WeatherForecastWPF.Client.Confguration
     {
         public string BaseUrl { get; set; }
         public string GetProducts { get; set; }
+        public string CreateProduct { get; internal set; }
     }
 }

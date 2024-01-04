@@ -52,6 +52,19 @@ namespace P05Shop.API.Controllers
                 return StatusCode(500, $"Internal server error {result.Message}");
         }
 
+        // przykład polecenia niezgodnego z REST
+        // https://localhost:5001/api/product/delete?id=1 (DELETE)
+        [HttpGet("delete")]
+        public async Task<ActionResult<ServiceReponse<Product>>> DeleteProductNotInRESTSpecyfication([FromQuery] int id)
+        {
+            var result = await _productService.DeleteProductAsync(id);
+
+            if (result.Success)
+                return Ok(result);
+            else
+                return StatusCode(500, $"Internal server error {result.Message}");
+        }
+
         [HttpPut]
         public async Task<ActionResult<ServiceReponse<Product>>> UpdateProduct([FromBody] Product updatedProduct)
         {

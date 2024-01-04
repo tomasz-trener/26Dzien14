@@ -190,7 +190,10 @@ namespace P05Shop.API.Services
 
             try
             {
-                result.Data = await _dataContext.Products.FirstOrDefaultAsync(p => p.Id == id);
+                result.Data = await _dataContext.Products.FirstAsync(p => p.Id == id);
+                // first rzuca wyjątek jeśli nie znajdzie produktu
+                // firstordefault zwraca null jeśli nie znajdzie produktu
+
                 result.Success = true;
                 result.Message = "Data retrieved successfully";
             }
