@@ -60,5 +60,31 @@ namespace P04WeatherForecastWPF.Client.ViewModels
             }
            
         }
+
+        public async Task DeleteProductAsync()
+        {
+            var result = await _productService.DeleteProductAsync(_selectedProduct.Id);
+            if (result.Success)
+            {
+                await GetProductsAsync();
+            }
+            else
+            {
+                _messageDialogService.ShowMessage(result.Message);
+            }
+        }
+
+        public async Task UpdateProductAsync()
+        {
+            var result = await _productService.UpdateProductAsync(_selectedProduct);
+            if (result.Success)
+            {
+                await GetProductsAsync();
+            }
+            else
+            {
+                _messageDialogService.ShowMessage(result.Message);
+            }
+        }
     }
 }
