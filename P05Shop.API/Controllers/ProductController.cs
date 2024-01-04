@@ -62,6 +62,17 @@ namespace P05Shop.API.Controllers
             else
                 return StatusCode(500, $"Internal server error {result.Message}");
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ServiceReponse<Product>>> GetProduct([FromRoute] int id)
+        {
+            var result = await _productService.GetProductAsync(id);
+
+            if (result.Success)
+                return Ok(result);
+            else
+                return StatusCode(500, $"Internal server error {result.Message}");
+        }
     }
 
 
