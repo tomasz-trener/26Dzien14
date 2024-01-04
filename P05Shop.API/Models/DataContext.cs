@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using P06Shop.Shared;
+using P07Shop.DataSeeder;
 
 namespace P05Shop.API.Models
 {
@@ -36,7 +37,9 @@ namespace P05Shop.API.Models
             //modelBuilder.Entity<Product>()
             //    .HasKey(p=>p.Code); // domyślnie kluczem głównym jest pole Id
 
-
+            modelBuilder.Entity<Product>()
+                .HasData(ProductDataSeeder.GenerateProductData());
+                 
 
         }
     }

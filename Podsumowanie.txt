@@ -13,3 +13,15 @@
 
 4) Przeprowadzamy migracje
  - potrzebujemy zainstalować narzędzie: dotnet ef (dotnet tool install --global dotnet-ef))
+ - aktualizacja dotnet ef (dotnet tool update --global dotnet-ef)
+
+ - dodajemy migracje (dotnet ef migrations add InitialCreate)
+ - gdy chcemy cognąc migracje (dotnet ef migrations remove)
+ - Net 8. w przypadlu bledu cofania migragarcji ustawiamy <InvariantGlobalization>false</InvariantGlobalization>
+ - aktualizujemy baze danych (dotnet ef database update)
+ - dodajemy nowe kolumny do Produktu, aktualizaujemy dataSeeder i dodajemy nowa migracje z danymi Inicializujacymi
+ - przeprowadzilismy test cofania sie do przedostaniej migracji i ponownego aktualizowania bazy danych
+
+ 5) Rozbudowa API o:
+	- serwis z obsługą CRUD 
+	- kontroler z obsługą CRUD zgodnie z REST
