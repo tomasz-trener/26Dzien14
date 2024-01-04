@@ -31,12 +31,14 @@ namespace P04WeatherForecastWPF.Client.Services
             return result;
         }
 
-        public Task<ServiceReponse<Product>> DeleteProductAsync(int id)
+        public Task<ServiceReponse<bool>> DeleteProductAsync(int id)
         {
             // jeżeli uzyjemy / na początku to będzie to adres bezwzględny
             // czyli scieżka bedzie wyglądać tak: https://localhost:5001/1
             // zacznyamy od roota
             var response = _httpClient.DeleteAsync($"{id}");
+            var result = response.Result.Content.ReadFromJsonAsync<ServiceReponse<bool>>();
+            return result;
         }
 
         public Task<ServiceReponse<Product>> GetProductAsync(int id)

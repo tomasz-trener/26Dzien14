@@ -57,9 +57,9 @@ namespace P05Shop.API.Services
         }
 
         // Tutaj mamy 2 zapytania do bazy danych, jedno pobiera produkt, drugie usuwa produkt
-        public async Task<ServiceReponse<Product>> DeleteProductAsync(int id)
+        public async Task<ServiceReponse<bool>> DeleteProductAsync(int id)
         {
-            var result = new ServiceReponse<Product>();
+            var result = new ServiceReponse<bool>();
 
             try
             {
@@ -70,7 +70,7 @@ namespace P05Shop.API.Services
                     _dataContext.Products.Remove(product);
                     await _dataContext.SaveChangesAsync();
 
-                    result.Data = product;
+                    result.Data = true;
                     result.Success = true;
                     result.Message = "Data deleted successfully";
                 }

@@ -42,7 +42,7 @@ namespace P05Shop.API.Controllers
 
         // https://localhost:5001/api/product/1 (DELETE)
         [HttpDelete("{id}")]
-        public async Task<ActionResult<ServiceReponse<Product>>> DeleteProduct([FromRoute] int id)
+        public async Task<ActionResult<ServiceReponse<bool>>> DeleteProduct([FromRoute] int id)
         {
             var result = await _productService.DeleteProductAsync(id);
 

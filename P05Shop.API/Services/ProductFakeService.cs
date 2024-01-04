@@ -11,7 +11,7 @@ namespace P05Shop.API.Services
             throw new NotImplementedException();
         }
 
-        public Task<ServiceReponse<Product>> DeleteProductAsync(int id)
+        public Task<ServiceReponse<bool>> DeleteProductAsync(int id)
         {
             throw new NotImplementedException();
         }
