@@ -9,5 +9,10 @@ namespace P06Shop.Shared.Services.ProductService
     public interface IProductService
     {
         Task<ServiceReponse<List<Product>>> GetProductsAsync();
+        Task<ServiceReponse<Product>> CreateProductAsync(Product newProduct);
+        Task<ServiceReponse<Product>> DeleteProductAsync(int id);
+        Task<ServiceReponse<Product>> UpdateProductAsync(Product updatedProduct);
+        Task<ServiceReponse<Product>> GetProductAsync(int id);
+     
     }
 }

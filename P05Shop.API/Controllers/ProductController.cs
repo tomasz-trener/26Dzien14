@@ -17,17 +17,6 @@ namespace P05Shop.API.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Product>>> GetProducts()
        {
-            //try
-            //{
-            //    // pobranie danych z Serwisu 
-            //    //var products = await _productService.GetProducts();
-            //}
-            //catch (Exception ex)
-            //{
-            //    return StatusCode(StatusCodes.Status500InternalServerError,
-            //                           $"Error retrieving data from the database {ex.Message}");
-            //}
-
             var result = await _productService.GetProductsAsync();
 
             if(result.Success)
