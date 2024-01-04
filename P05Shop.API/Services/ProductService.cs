@@ -56,6 +56,43 @@ namespace P05Shop.API.Services
             return result;
         }
 
+        public async Task<ServiceReponse<Product>> UpdateProductAsync(Product updatedProduct)
+        {
+            var result = new ServiceReponse<Product>();
+
+            try
+            {
+                var product = await _dataContext.Products.FirstOrDefaultAsync(p => p.Id == updatedProduct.Id);
+
+                if (product != null)
+                {
+                    product.Title = updatedProduct.Title;
+                    product.Description = updatedProduct.Description;
+                    product.Barcode = updatedProduct.Barcode;
+                    product.Price = updatedProduct.Price;
+                    product.ReleaseDate = updatedProduct.ReleaseDate;
+
+                    await _dataContext.SaveChangesAsync();
+
+                    result.Data = product;
+                    result.Success = true;
+                    result.Message = "Data updated successfully";
+                }
+                else
+                {
+                    result.Message = $"Product with id {updatedProduct.Id} not found";
+                    result.Success = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = $"Error while updating product {ex.Message}";
+                result.Success = false;
+            }
+
+            return result;
+        }
+
 
     }
 }
