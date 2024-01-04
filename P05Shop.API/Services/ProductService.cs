@@ -56,6 +56,66 @@ namespace P05Shop.API.Services
             return result;
         }
 
+        // Tutaj mamy 2 zapytania do bazy danych, jedno pobiera produkt, drugie usuwa produkt
+        public async Task<ServiceReponse<Product>> DeleteProductAsync(int id)
+        {
+            var result = new ServiceReponse<Product>();
+
+            try
+            {
+                var product = await _dataContext.Products.FirstOrDefaultAsync(p => p.Id == id);
+
+                if (product != null)
+                {
+                    _dataContext.Products.Remove(product);
+                    await _dataContext.SaveChangesAsync();
+
+                    result.Data = product;
+                    result.Success = true;
+                    result.Message = "Data deleted successfully";
+                }
+                else
+                {
+                    result.Message = $"Product with id {id} not found";
+                    result.Success = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Message = $"Error while deleting product {ex.Message}";
+                result.Success = false;
+            }
+
+            return result;
+        }
+
+        // Można to zrobić w jednym zapytaniu do bazy danych
+        public async Task<ServiceReponse<Product>> DeleteProductOneQueryAsync(int id)
+        {
+            var result = new ServiceReponse<Product>();
+
+            try
+            {
+                var product = new Product() { Id = id };
+                _dataContext.Products.Attach(product); // załączenie produktu do kontekstu
+
+                _dataContext.Products.Remove(product); // wyśle tylko jedno zapytanie do bazy danych
+                await _dataContext.SaveChangesAsync();
+                result.Data = product;
+                result.Success = true;
+                result.Message = "Data deleted successfully";
+
+            }
+            catch (Exception ex)
+            {
+                result.Message = $"Error while deleting product {ex.Message}";
+                result.Success = false;
+            }
+
+            return result;
+
+        }
+
         public async Task<ServiceReponse<Product>> UpdateProductAsync(Product updatedProduct)
         {
             var result = new ServiceReponse<Product>();
@@ -93,66 +153,36 @@ namespace P05Shop.API.Services
             return result;
         }
 
-        // Tutaj mamy 2 zapytania do bazy danych, jedno pobiera produkt, drugie usuwa produkt
-        public async Task<ServiceReponse<Product>> DeleteProductAsync(int id)
+        public async Task<ServiceReponse<Product>> UpdateProductOneQueryAsync(Product updatedProduct)
         {
             var result = new ServiceReponse<Product>();
 
             try
             {
-                var product = await _dataContext.Products.FirstOrDefaultAsync(p => p.Id == id);
+                var product = new Product() { Id = updatedProduct.Id };
+                _dataContext.Products.Attach(product); // załączenie produktu do kontekstu
 
-                if (product != null)
-                {
-                    _dataContext.Products.Remove(product);
-                    await _dataContext.SaveChangesAsync();
+                product.Title = updatedProduct.Title;
+                product.Description = updatedProduct.Description;
+                product.Barcode = updatedProduct.Barcode;
+                product.Price = updatedProduct.Price;
+                product.ReleaseDate = updatedProduct.ReleaseDate;
 
-                    result.Data = product;
-                    result.Success = true;
-                    result.Message = "Data deleted successfully";
-                }
-                else
-                {
-                    result.Message = $"Product with id {id} not found";
-                    result.Success = false;
-                }
+                await _dataContext.SaveChangesAsync();
+
+                result.Data = product;
+                result.Success = true;
+                result.Message = "Data updated successfully";
+
             }
             catch (Exception ex)
             {
-                result.Message = $"Error while deleting product {ex.Message}";
+                result.Message = $"Error while updating product {ex.Message}";
                 result.Success = false;
             }
 
             return result;
         }
-
-        //// Można to zrobić w jednym zapytaniu do bazy danych
-        //public async Task<ServiceReponse<Product>> DeleteProductOneQueryAsync(int id)
-        //{
-        //    var result = new ServiceReponse<Product>();
-
-        //    try
-        //    {
-        //        var product = new Product() { Id = id };
-        //        _dataContext.Products.Attach(product); // załączenie produktu do kontekstu
-
-        //        _dataContext.Products.Remove(product); // wyśle tylko jedno zapytanie do bazy danych
-        //        await _dataContext.SaveChangesAsync();
-        //        result.Data = product;
-        //        result.Success = true;
-        //        result.Message = "Data deleted successfully";
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        result.Message = $"Error while deleting product {ex.Message}";
-        //        result.Success = false;
-        //    }
-
-        //    return result;
-
-        //}
-
 
     }
 }
