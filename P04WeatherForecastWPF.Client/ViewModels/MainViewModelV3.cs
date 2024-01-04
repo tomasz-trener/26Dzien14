@@ -21,7 +21,6 @@ namespace P04WeatherForecastWPF.Client.ViewModels
     // dodalismy WeatherViewModel ktory bindujemy z widokiem 
     public partial class MainViewModelV3 : ObservableObject, IMainViewModel
     {
-      
         private readonly IAccuWeatherService _accuWeatherService;
         private readonly IServiceProvider _serviceProvider;
 
