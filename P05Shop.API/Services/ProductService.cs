@@ -184,5 +184,23 @@ namespace P05Shop.API.Services
             return result;
         }
 
+        public async Task<ServiceReponse<Product>> GetProductAsync(int id)
+        {
+            var result = new ServiceReponse<Product>();
+
+            try
+            {
+                result.Data = await _dataContext.Products.FirstOrDefaultAsync(p => p.Id == id);
+                result.Success = true;
+                result.Message = "Data retrieved successfully";
+            }
+            catch (Exception ex)
+            {
+                result.Message = $"Error retrieving data from the database {ex.Message}";
+                result.Success = false;
+            }
+
+            return result;
+        }
     }
 }
