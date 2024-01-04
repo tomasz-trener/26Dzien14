@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using P04WeatherForecastWPF.Client.Confguration;
+using P04WeatherForecastWPF.Client.MessageBox;
 using P04WeatherForecastWPF.Client.Services;
 using P04WeatherForecastWPF.Client.ViewModels;
+using P06Shop.Shared.MessageBox;
 using P06Shop.Shared.Services.ProductService;
 using System.Configuration;
 using System.Data;
@@ -67,6 +69,7 @@ namespace P04WeatherForecastWPF.Client
             //  services.AddSingleton<IAccuWeatherService, AccuWeatherService>(); 
             services.AddSingleton<IAccuWeatherService, FakeAccuWeatherService>(); // bo wystraczy nam tylko 1 serwis na cala aplikacje 
             services.AddSingleton<IProductService, ProductService>();
+            services.AddSingleton<IMessageDialogService, WpfMessageDialogService>();
         }
 
         private void ConfigureViews(IServiceCollection services)
