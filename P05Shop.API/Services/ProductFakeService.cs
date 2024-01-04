@@ -6,6 +6,21 @@ namespace P05Shop.API.Services
 {
     public class ProductFakeService : IProductService
     {
+        public Task<ServiceReponse<Product>> CreateProductAsync(Product newProduct)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ServiceReponse<Product>> DeleteProductAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ServiceReponse<Product>> GetProductAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<ServiceReponse<List<Product>>> GetProductsAsync()
         {
             var result = new ServiceReponse<List<Product>>();
@@ -23,6 +38,11 @@ namespace P05Shop.API.Services
             }
 
             return result;
+        }
+
+        public Task<ServiceReponse<Product>> UpdateProductAsync(Product updatedProduct)
+        {
+            throw new NotImplementedException();
         }
     }
 }

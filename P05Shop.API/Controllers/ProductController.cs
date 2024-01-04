@@ -15,11 +15,11 @@ namespace P05Shop.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Product>>> GetProducts()
-       {
+        public async Task<ActionResult<ServiceReponse<List<Product>>>> GetProducts()
+        {
             var result = await _productService.GetProductsAsync();
 
-            if(result.Success)
+            if (result.Success)
             {
                 return Ok(result);
             }
@@ -27,7 +27,41 @@ namespace P05Shop.API.Controllers
             {
                 return StatusCode(500, $"Internal server error {result.Message}");
             }
-       }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<ServiceReponse<Product>>> CreateProduct([FromBody] Product newProduct)
+        {
+            var result = await _productService.CreateProductAsync(newProduct);
+
+            if (result.Success)
+                return Ok(result);
+            else
+                return StatusCode(500, $"Internal server error {result.Message}");
+        }
+
+        // https://localhost:5001/api/product/1 (DELETE)
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<ServiceReponse<Product>>> DeleteProduct([FromRoute] int id)
+        {
+            var result = await _productService.DeleteProductAsync(id);
+
+            if (result.Success)
+                return Ok(result);
+            else
+                return StatusCode(500, $"Internal server error {result.Message}");
+        }
+
+        [HttpPut]
+        public async Task<ActionResult<ServiceReponse<Product>>> UpdateProduct([FromBody] Product updatedProduct)
+        {
+            var result = await _productService.UpdateProductAsync(updatedProduct);
+
+            if (result.Success)
+                return Ok(result);
+            else
+                return StatusCode(500, $"Internal server error {result.Message}");
+        }
     }
 
 
