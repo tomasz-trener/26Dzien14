@@ -78,6 +78,7 @@ namespace P04WeatherForecastWPF.Client
             services.AddTransient<MainWindow>();
             services.AddTransient<SecondWindow>();
             services.AddTransient<ShopProductsView>();
+            services.AddTransient<ProductDetailsView>();
         }
 
         private void ConfigureHttpClients(IServiceCollection services, AppSettings appSettings)

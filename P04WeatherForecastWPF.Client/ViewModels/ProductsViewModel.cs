@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using P06Shop.Shared;
 using P06Shop.Shared.MessageBox;
 using P06Shop.Shared.Services.ProductService;
@@ -15,6 +16,7 @@ namespace P04WeatherForecastWPF.Client.ViewModels
     {
         private readonly IProductService _productService;
         private readonly IMessageDialogService _messageDialogService;
+        private readonly ProductDetailsView _productDetailsView;
 
         [ObservableProperty]
         private ObservableCollection<Product> _products;
@@ -24,10 +26,12 @@ namespace P04WeatherForecastWPF.Client.ViewModels
         private Product _selectedProduct;
 
 
-        public ProductsViewModel(IProductService productService, IMessageDialogService messageDialogService)
+        public ProductsViewModel(IProductService productService, IMessageDialogService messageDialogService, 
+            ProductDetailsView productDetailsView)
         {
             _productService = productService;
             _messageDialogService = messageDialogService;
+            _productDetailsView = productDetailsView;
         }
 
         public async Task GetProductsAsync()
@@ -85,6 +89,12 @@ namespace P04WeatherForecastWPF.Client.ViewModels
             {
                 _messageDialogService.ShowMessage(result.Message);
             }
+        }
+
+        [RelayCommand]
+        public async Task ShowDetails(Product product)
+        {
+            _productDetailsView.Show();
         }
     }
 }

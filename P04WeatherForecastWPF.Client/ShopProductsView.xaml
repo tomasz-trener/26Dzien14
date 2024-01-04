@@ -12,6 +12,9 @@
                 <StackPanel>
                     <Label Content="{Binding Title}"></Label>
                     <Label Content="{Binding Description}"></Label>
+                    <Button Command="{Binding DataContext.ShowDetailsCommand, RelativeSource={RelativeSource AncestorType=ListView}}" 
+                            CommandParameter="{Binding}"
+                            Content="Edit"></Button>
                 </StackPanel>
             </DataTemplate>
         </ListView.ItemTemplate>
