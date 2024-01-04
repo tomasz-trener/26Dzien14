@@ -9,3 +9,7 @@
  - konfigurujemy data context
  - dokumentacja w : https://www.entityframeworktutorial.net/efcore/
  - okreslamy connectionString w appsettings.json
+ - w program.cs konfigurujemy data context i connectionString
+
+4) Przeprowadzamy migracje
+ - potrzebujemy zainstalować narzędzie: dotnet ef (dotnet tool install --global dotnet-ef))
