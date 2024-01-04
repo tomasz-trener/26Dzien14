@@ -25,3 +25,4 @@
  5) Rozbudowa API o:
 	- serwis z obsługą CRUD 
 	- kontroler z obsługą CRUD zgodnie z REST
+	- testujemy API w Postmanie
