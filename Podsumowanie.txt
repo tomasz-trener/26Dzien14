@@ -29,4 +29,5 @@
 
 6) Rozbudowa klienta o:
 	- serwis z obsługą CRUD 
+	- aktualizacja ProductsViewModel
 	- dodanie widoków w xaml  

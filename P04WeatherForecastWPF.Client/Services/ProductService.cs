@@ -31,19 +31,21 @@ namespace P04WeatherForecastWPF.Client.Services
             return result;
         }
 
-        public Task<ServiceReponse<bool>> DeleteProductAsync(int id)
+        public async Task<ServiceReponse<bool>> DeleteProductAsync(int id)
         {
             // jeżeli uzyjemy / na początku to będzie to adres bezwzględny
             // czyli scieżka bedzie wyglądać tak: https://localhost:5001/1
             // zacznyamy od roota
-            var response = _httpClient.DeleteAsync($"{id}");
-            var result = response.Result.Content.ReadFromJsonAsync<ServiceReponse<bool>>();
+            var response = await _httpClient.DeleteAsync($"{id}");
+            var result = await response.Content.ReadFromJsonAsync<ServiceReponse<bool>>();
             return result;
         }
 
-        public Task<ServiceReponse<Product>> GetProductAsync(int id)
+        public async Task<ServiceReponse<Product>> GetProductAsync(int id)
         {
-            throw new NotImplementedException();
+            var response = await _httpClient.GetAsync($"{id}");
+            var result = await response.Content.ReadFromJsonAsync<ServiceReponse<Product>>();
+            return result;
         }
 
         public async Task<ServiceReponse<List<Product>>> GetProductsAsync()
@@ -54,9 +56,11 @@ namespace P04WeatherForecastWPF.Client.Services
             return result;
         }
 
-        public Task<ServiceReponse<Product>> UpdateProductAsync(Product updatedProduct)
+        public async Task<ServiceReponse<Product>> UpdateProductAsync(Product updatedProduct)
         {
-            throw new NotImplementedException();
+            var response = await _httpClient.PutAsJsonAsync(_appSettings.ProductEndpoint.UpdateProduct, updatedProduct);
+            var result = await response.Content.ReadFromJsonAsync<ServiceReponse<Product>>();
+            return result;
         }
     }
 }
