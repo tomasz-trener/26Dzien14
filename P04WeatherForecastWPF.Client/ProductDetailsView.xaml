@@ -6,7 +6,32 @@
         xmlns:local="clr-namespace:P04WeatherForecastWPF.Client"
         mc:Ignorable="d"
         Title="ProductDetailsView" Height="450" Width="800">
-    <Grid>
-        
+    <Grid DataContext="{Binding SelectedProduct}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Title:" Grid.Row="0" Grid.Column="0" ></TextBlock>
+        <TextBox Text="{Binding Title}"  Grid.Row="0" Grid.Column="1" ></TextBox>
+
+        <TextBlock Text="Description:" Grid.Row="1" Grid.Column="0" ></TextBlock>
+        <TextBox Text="{Binding Description}"  Grid.Row="1" Grid.Column="1" ></TextBox>
+
+        <TextBlock Text="Barcode:" Grid.Row="2" Grid.Column="0" ></TextBlock>
+        <TextBox Text="{Binding Barcode}"  Grid.Row="2" Grid.Column="1" ></TextBox>
+
+        <TextBlock Text="Price:" Grid.Row="3" Grid.Column="0" ></TextBlock>
+        <TextBox Text="{Binding Price}"  Grid.Row="3" Grid.Column="1" ></TextBox>
+
+        <TextBlock Text="ReleaseDate:" Grid.Row="4" Grid.Column="0" ></TextBlock>
+        <TextBox Text="{Binding ReleaseDate}"  Grid.Row="4" Grid.Column="1" ></TextBox>
     </Grid>
 </Window>

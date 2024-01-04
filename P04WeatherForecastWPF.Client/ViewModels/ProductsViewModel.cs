@@ -95,6 +95,8 @@ namespace P04WeatherForecastWPF.Client.ViewModels
         public async Task ShowDetails(Product product)
         {
             _productDetailsView.Show();
+            SelectedProduct = product;
+            _productDetailsView.DataContext = this;
         }
     }
 }
