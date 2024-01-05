@@ -31,3 +31,4 @@
 	- serwis z obsługą CRUD 
 	- aktualizacja ProductsViewModel
 	- dodanie widoków w xaml  
+	  - dodanie opcji ukrywania okienka szczegółów zamiast usuwania

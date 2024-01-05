@@ -98,5 +98,13 @@ namespace P04WeatherForecastWPF.Client.ViewModels
             SelectedProduct = product;
             _productDetailsView.DataContext = this;
         }
+
+
+        [RelayCommand]
+        public async Task Delete()
+        {
+            await _productService.DeleteProductAsync(_selectedProduct.Id);
+            await GetProductsAsync();
+        }
     }
 }
