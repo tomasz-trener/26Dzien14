@@ -45,15 +45,7 @@ namespace P04WeatherForecastWPF.Client.ViewModels
 
         public async Task CreateProductAsync()
         {
-            var newProduct = new Product
-            {
-                Title = _selectedProduct.Title,
-                Price = _selectedProduct.Price,
-                Description = _selectedProduct.Description,
-                ReleaseDate = _selectedProduct.ReleaseDate,
-            };
-
-            var result = await _productService.CreateProductAsync(newProduct);
+            var result = await _productService.CreateProductAsync(_selectedProduct);
             if (result.Success)
             {
                await GetProductsAsync();
@@ -65,18 +57,7 @@ namespace P04WeatherForecastWPF.Client.ViewModels
            
         }
 
-        public async Task DeleteProductAsync()
-        {
-            var result = await _productService.DeleteProductAsync(_selectedProduct.Id);
-            if (result.Success)
-            {
-                await GetProductsAsync();
-            }
-            else
-            {
-                _messageDialogService.ShowMessage(result.Message);
-            }
-        }
+         
 
         public async Task UpdateProductAsync()
         {
@@ -103,8 +84,38 @@ namespace P04WeatherForecastWPF.Client.ViewModels
         [RelayCommand]
         public async Task Delete()
         {
-            await _productService.DeleteProductAsync(_selectedProduct.Id);
-            await GetProductsAsync();
+            var result = await _productService.DeleteProductAsync(_selectedProduct.Id);
+            if (result.Success)
+            {
+                await GetProductsAsync();
+            }
+            else
+            {
+                _messageDialogService.ShowMessage(result.Message);
+            }
+        }
+
+        [RelayCommand]
+        public async Task Save()
+        {
+            if (_selectedProduct.Id==0)
+            {
+                // tworzymy nowy produkt 
+                await CreateProductAsync();
+            }
+            else
+            {
+                // aktualizujemy produkt
+                await UpdateProductAsync();
+            }
+        }
+
+        [RelayCommand]
+        public async Task New()
+        {
+            _productDetailsView.Show();
+            _productDetailsView.DataContext = this;
+            SelectedProduct = new Product();
         }
     }
 }
