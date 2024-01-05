@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using P04WeatherForecastWPF.Client.Models;
 using P06Shop.Shared;
 using P06Shop.Shared.MessageBox;
 using P06Shop.Shared.Services.ProductService;
@@ -25,6 +26,10 @@ namespace P04WeatherForecastWPF.Client.ViewModels
         [ObservableProperty]
         private Product _selectedProduct;
 
+        partial void OnSelectedProductChanged(Product value)   
+        {
+            DeleteCommand.NotifyCanExecuteChanged();
+        }
 
         public ProductsViewModel(IProductService productService, IMessageDialogService messageDialogService, 
             ProductDetailsView productDetailsView)
@@ -81,7 +86,7 @@ namespace P04WeatherForecastWPF.Client.ViewModels
         }
 
 
-        [RelayCommand]
+        [RelayCommand(CanExecute = nameof(CanDelete))]
         public async Task Delete()
         {
             var result = await _productService.DeleteProductAsync(_selectedProduct.Id);
@@ -93,6 +98,11 @@ namespace P04WeatherForecastWPF.Client.ViewModels
             {
                 _messageDialogService.ShowMessage(result.Message);
             }
+        }
+
+        public bool CanDelete()
+        {
+            return _selectedProduct != null && _selectedProduct.Id != 0;
         }
 
         [RelayCommand]
