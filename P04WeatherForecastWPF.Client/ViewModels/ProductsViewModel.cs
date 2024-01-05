@@ -92,6 +92,7 @@ namespace P04WeatherForecastWPF.Client.ViewModels
             var result = await _productService.DeleteProductAsync(_selectedProduct.Id);
             if (result.Success)
             {
+                _productDetailsView.Hide();
                 await GetProductsAsync();
             }
             else
